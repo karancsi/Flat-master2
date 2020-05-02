@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Facelet Title</title>
+</h:head>
+<h:body>
+    <ui:composition template="templates/common.xhtml">
+        <ui:define name="content">
+            <div>
+
+
+
+                <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
+
+                <p:fieldset legend="Leírás" style="margin-bottom:20px">
+                    <h:panelGrid columns="2" cellpadding="5">
+                        <p:graphicImage name="Flat/images/penthouse.png"  />
+                        <h:outputText
+                                value="Ez az alkalmazás egy 4 emeletes bérház lakónak a közös költségét tartja nyilván. Minden egyes emeleten 5 különböző méretű lakás található. Alap esetben ezt a szoftvert a ház közös képviselőjének és csapatának
+                        a munkáját segíti elő. Be tudják jegyezni ha új lakó jön a házba, hogy neki mennyivel kell majd támogatni a közös érdekeket például a  területek tisztántartását, különféle felújításokat, karbantartásokat.
+                        A programban ki lehet listáztatni a lakókat, költségeket, befizetéseket." />
+                    </h:panelGrid>
+                </p:fieldset>
+
+                <p:fieldset legend="Lakók, lakások nyilvántartása" toggleable="true" toggleSpeed="500">
+                    <p:ajax event="toggle" listener="#{fieldsetView.handleToggle}" update="msgs" />
+                    <h:panelGrid columns="2" cellpadding="5">
+
+                        <h:outputText value="A rendszer képes új lakó felvételére, amikor a beköltözés megtörtént. Eltárolja a nevét, melyik lakás lett az övé, és annak a flagjét átbillenti, hogy eladva, azaz laknak benne. Ezek mellett beállítható mekkora egyenleggel indul az adott illető, ha volt előzőleges befizetése az lesz a kezdő egyenlege.
+                        Amint történik egy befizetés az aktuális egyenlege úgy fog módosulni az illetőnek. A lakásról az elhelyezkedése (a házon belül), az alapterülete, illetve a légtér mérete van letárolva."></h:outputText>
+                    </h:panelGrid>
+                </p:fieldset>
+                <p:fieldset legend="Költségek kiírása" toggleable="true" toggleSpeed="500">
+                    <p:ajax event="toggle" listener="#{fieldsetView.handleToggle}" update="msgs" />
+                    <h:panelGrid columns="2" cellpadding="5">
+
+                        <h:outputText value="A költségek a kötelező befizetéseket takarja. Ezeket kóhoz lehet rendelni. Ide tartozhat például a közös költség, vagy ha valamilyen baleset folyamán az illető kárt okozott, annak a megtérítése.
+                        Minden költséghez tudunk társítani egy leírást, egy összeget, illetve beállítható, hogy az adott illető akire vonatkozik, teljesítette-e már a befizetést. "></h:outputText>
+                    </h:panelGrid>
+                </p:fieldset>
+
+
+            </div>
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>

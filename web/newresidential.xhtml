@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Client</title>
+</h:head>
+
+<h:body>
+    <ui:composition template="templates/common.xhtml">
+        <ui:define name="content">
+
+            <p:panel header="Új lakó felvétele" style="margin-bottom:20px">
+                <h:panelGrid cellpadding="10">
+                    <h:form>
+                        <p:panelGrid columns="2" style="width: 50%" cellpadding="5" >
+                            <h:outputText value="Név"/>
+                            <p:inputText value="#{residentialView.newResidential.name}"/>
+
+                            <h:outputText value="Lakás azonosítója"/>
+                            <p:inputMask value="#{residentialView.newResidential.idFlat}" />
+
+                            <h:outputText value="Kezdő egyenleg"/>
+                            <p:inputMask value="#{residentialView.newResidential.startBalance} Ft" />
+
+                            <h:outputText value="Aktuális egyenleg"/>
+                            <p:inputText value="#{residentialView.newResidential.actulaBalance} Ft"/>
+
+                            <h:outputText/>
+                            <p:commandButton value="Felvétel" action="#{residentialView.addRes}"/>
+                        </p:panelGrid>
+                    </h:form>
+                </h:panelGrid>
+            </p:panel>
+
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>

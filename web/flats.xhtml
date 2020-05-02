@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Flats</title>
+</h:head>
+
+<h:body>
+    <ui:composition template="templates/common.xhtml">
+        <ui:define name="content">
+            <h:form>
+                <p:dataTable id="flats" var="flatsentity" value="#{flatsView.flats}" style="width: 100%" rows="15" widgetVar="flatsEntityTable"
+                             paginator="true"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             rowsPerPageTemplate="5,10,15"/>
+                             <!--rowKey="#{flatsentity.id}" selection="#{flatsView.selectedFlat}" selectionMode="single"-->
+
+                    <p:column filterBy="#{flatsentity.floor}" headerText="Emelet" filterMatchMode="contains">
+                        <h:outputText value="#{flatsentity.floor}" rendered="#{flatsentity.idflat != flatsView.editedFlat.idflat}"/>
+                        <p:inputText value="#{flatsView.editedFlat.floor}" size="13" rendered="#{flatsentity.idflat == flatsView.editedFlat.idflat}"/>
+                    </p:column>
+
+                    <p:column filterBy="#{flatsentity.door}" headerText="Ajtóó" filterMatchMode="contains">
+                        <h:outputText value="#{flatsentity.door}" rendered="#{flatsentity.idflat != flatsView.editedFlat.idflat}"/>
+                        <p:inputText value="#{flatsView.editedFlat.door}" size="13" rendered="#{flatsentity.idflat == flatsView.editedFlat.idflat}"/>
+                    </p:column>
+
+                    <p:column filterBy="#{flatsentity.size}" headerText="Alapterület" filterMatchMode="contains">
+                        <h:outputText value="#{flatsentity.size}" rendered="#{flatsentity.idflat != flatsView.editedFlat.idflat}"/>
+                        <p:inputText value="#{flatsView.editedFlat.size}" size="13" rendered="#{flatsentity.idflat == flatsView.editedFlat.idflat}"/>
+                    </p:column>
+
+                    <p:column filterBy="#{flatsentity.airspace}" headerText="Légtér" filterMatchMode="contains">
+                        <h:outputText value="#{flatsentity.airspace}" rendered="#{flatsentity.idflat != flatsView.editedFlat.idflat}"/>
+                        <p:inputText value="#{flatsView.editedFlat.airspace}" size="13" rendered="#{flatsentity.idflat == flatsView.editedFlat.idflat}"/>
+                    </p:column>
+
+                    <p:column filterBy="#{flatsentity.isempty}" headerText="Szabad">
+                        <h:outputText value="#{flatsentity.isempty}" rendered="#{flatsentity.idflat != flatsView.editedFlat.idflat}"/>
+                        <p:selectOneMenu value="#{flatsView.editedFlat.isempty}" size="13" rendered="#{flatsentity.idflat == flatsView.editedFlat.idflat}">
+                            <f:selectItem itemLabel="Üres" itemValue="0"/>
+                            <f:selectItem itemLabel="Foglalt" itemValue="1"/>
+                        </p:selectOneMenu>
+                    </p:column>
+
+                <p:column headerText="Adatlap">
+                    <p:commandButton value="Adatlap" action="#{flatsView.showFlatData(flatsentity)}"/>
+                </p:column>
+
+                <p:column headerText="Törlés">
+                    <p:commandButton value="Delete" action="#{flatsView.deleteFlat(flatsentity)}"/>
+                </p:column>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>
