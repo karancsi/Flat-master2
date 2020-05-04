@@ -40,6 +40,9 @@
                         <p:commandButton value="Módosítás" action="#{residentialView.changeEdit()}"/>
                     </p:column>
 
+                    <p:column headerText="Költség-data">
+                        <p:commandButton value="Költség-data" action="#{flatsView.showFlatData(flatsentity)}"/>
+                    </p:column>
                 </p:dataTable>
             </h:form>
         </ui:define>

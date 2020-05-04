@@ -1,6 +1,7 @@
 package view;
 
 import dto.ExpensesOfResidential;
+import model.FlatEntity;
 import model.ResidentialEntity;
 import service.ResidentialService;
 
@@ -47,6 +48,11 @@ public class ResidentialView implements Serializable{
         service.editResidential(editedResidential);
         changeEdit();
         return "res_data?faces-redirect=true";
+    }
+
+    public String deleteResidential(ResidentialEntity res, FlatEntity flat){
+        service.eviction(res,flat);
+        return "movies?faces-redirect=true";
     }
 
 //    public String dataRes(ResidentialEntity res){

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+    <ui:composition template="templates/common.xhtml">
+        <ui:define name="content">
+
+
+            <p:panel header="Kiválasztott lakás adatai" style="margin-bottom:20px">
+                <h:panelGrid cellpadding="10">
+                    <h:form>
+                        <p:panelGrid columns="2" style="width: 50%">
+
+                            <h:outputText value="id:"/>
+                            <h:outputText value="#{flatsView.selectedFlat.idflat}"/>
+
+                            <h:outputText value="Emelet:"/>
+                            <h:outputText value="#{flatsView.selectedFlat.floor}"/>
+
+
+                            <h:outputText value="Ajtó:"/>
+                            <h:outputText value="#{flatsView.selectedFlat.door}" />
+
+
+                            <h:outputText value="Alapterület:"/>
+                            <h:outputText value="#{flatsView.selectedFlat.size}" />
+
+
+                            <h:outputText value="Légtér:"/>
+                            <h:outputText value="#{flatsView.selectedFlat.airspace}" />
+
+                        </p:panelGrid>
+                        <p:commandButton value="Back" action="flats.xhtml" />
+                    </h:form>
+                </h:panelGrid>
+            </p:panel>
+
+            <p:panel header="Lakók" style="margin-bottom:20px">
+                <h:panelGrid cellpadding="10">
+                    <h:form>
+                        <p:dataTable var="residentialentitiy" value="#{residentialView.residentials}" style="width: 100%" rows="10"  paginator="true"
+                                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                     rowsPerPageTemplate="5,10,15">
+                            <p:column filterBy="#{residentialentitiy.name}" headerText="Név">
+                                <h:outputText value="#{residentialentitiy.name}" />
+                            </p:column>
+                            <p:column filterBy="#{residentialentitiy.startbalance}" headerText="Kezdő egyenleg">
+                                <h:outputText value="#{residentialentitiy.startbalance}" >
+                                </h:outputText>
+                            </p:column>
+                            <p:column filterBy="#{residentialentitiy.actualbalance}" headerText="Aktuális egyenleg">
+                                <h:outputText value="#{residentialentitiy.actualbalance}" />
+                                <p:inputText value="#{residentialView.editedResidential.actualbalance}" size="12" rendered="#{residentialentitiy.idresidential == residentialView.editedResidential.idresidential}"/>
+                            </p:column>
+
+                            <p:column headerText="Egyenleg szerkesztés">
+                                <p:commandButton id="editBtn" value="Egyenleg szerkesztés" action="#{residentialView.changeEdit()}"/>
+                                <p:commandButton value="Mentés" rendered="#{ residentialView.edit and residentialentitiy.idresidential == residentialView.editedResidential.idresidential}" action="#{residentialView.saveRes()}"/>
+                            </p:column>
+
+                            <p:column headerText="Kiköltöztetés">
+                                <p:commandButton value="Kiköltöztetés" action="#{residentialView.deleteResidential(residentialentitiy, flatsView.selectedFlat)}"/>
+                            </p:column>
+                        </p:dataTable>
+                    </h:form>
+                </h:panelGrid>
+            </p:panel>
+
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>

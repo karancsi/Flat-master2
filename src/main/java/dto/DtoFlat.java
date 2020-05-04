@@ -1,5 +1,6 @@
 package dto;
 
+import dataConnect.HibernateUtil;
 import model.FlatEntity;
 import org.hibernate.Session;
 import org.hibernate.Transaction;

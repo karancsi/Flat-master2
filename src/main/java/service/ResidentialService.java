@@ -66,17 +66,4 @@ public class ResidentialService {
         DtoFlat.editFlat(flat);
     }
 
-    public long getDaysFromEnding(Date end){
-        Date currentTimeStamp = new Date();
-        long difference = 0;
-        if(currentTimeStamp.compareTo(end) >= 1){
-            long differenceInMillies = Math.abs(currentTimeStamp.getTime() - end.getTime());
-            //Get Days gone by since endTime
-            difference = TimeUnit.DAYS.convert(differenceInMillies, TimeUnit.MILLISECONDS);
-        }
-        return difference;
-    }
-
-
-
 }

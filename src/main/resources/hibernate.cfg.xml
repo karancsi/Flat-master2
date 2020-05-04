@@ -23,7 +23,6 @@
         <!-- Entities registry -->
         <mapping class="model.ExpenseEntity"/>
         <mapping class="model.FlatEntity"/>
-
         <mapping class="model.ResidentialEntity"/>
 
     </session-factory>
