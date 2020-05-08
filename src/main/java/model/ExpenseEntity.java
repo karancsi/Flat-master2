@@ -38,7 +38,7 @@ public class ExpenseEntity {
     public ExpenseEntity()
     {}
 
-    public ExpenseEntity(int idexpense, int idresidential,  Date date, String description, int amount, Date paymentdate, int success) {
+    public ExpenseEntity(int idexpense, int idresidential,  Date date, String description, int amount, Date paymentdate) {
         this.idexpense = idexpense;
         this.idresidential = idresidential;
 
@@ -46,7 +46,7 @@ public class ExpenseEntity {
         this.description = description;
         this.amount = amount;
         this.paymentdate = paymentdate;
-        this.success = success;
+        this.success = 0;
     }
 
     public int getIdexpense() {

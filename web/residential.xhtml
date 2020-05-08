@@ -8,7 +8,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
 <h:head>
-    <title>Clients</title>
+    <title>Residentials</title>
 </h:head>
 
 <h:body>
@@ -30,14 +30,14 @@
 
                     <p:column filterBy="#{residential.actualb}" headerText="Actual balance">
                         <h:outputText value="#{residential.actualb}"/>
-                    </p:column>
-
-                    <p:column headerText="Data Sheet">
-                        <p:commandButton value="DataSheet" action="#{residentialView.dataRes(residential)}"/>
+                        <p:inputText value="#{residentialView.selectedResidential.actualbalance}"/>
                     </p:column>
 
                     <p:column headerText="Módosítás">
                         <p:commandButton value="Módosítás" action="#{residentialView.changeEdit()}"/>
+                    </p:column>
+                   <p:column headerText="Mentés">
+                    <p:commandButton value="Mentés" action="#{residentialView.saveRes()}"/>
                     </p:column>
 
                     <p:column headerText="Költség-data">

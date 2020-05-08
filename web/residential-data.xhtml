@@ -2,11 +2,82 @@
 <!DOCTYPE html
         PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 <head>
     <title>Title</title>
 </head>
-<body>
+<h:body>
+    <ui:composition template="templates/common.xhtml">
+        <ui:define name="content">
 
-</body>
+
+            <p:panel header="Kiválasztott lakó adatai" style="margin-bottom:20px">
+                <h:panelGrid cellpadding="10">
+                    <h:form>
+                        <p:panelGrid columns="2" style="width: 50%">
+
+                            <h:outputText value="id:"/>
+                            <h:outputText value="#{residentialView.selectedResidential.idresidential}"/>
+
+                            <h:outputText value="Név:"/>
+                            <h:outputText value="#{residentialView.selectedResidential.name}"/>
+
+
+                            <h:outputText value="Kezdő egyenleg:"/>
+                            <h:outputText value="#{residentialView.selectedResidential.startbalance}" />
+
+
+                            <h:outputText value="Aktuális egyenleg:"/>
+                            <h:outputText value="#{residentialView.selectedResidential.actualbalance}" />
+
+
+                        </p:panelGrid>
+                        <p:commandButton value="Back" action="residential.xhtml" />
+                        <p:commandButton value="Új költség" action="add_expenses.xhtml" />
+                    </h:form>
+                </h:panelGrid>
+            </p:panel>
+
+            <p:panel header="Költségek" style="margin-bottom:20px">
+                <h:panelGrid cellpadding="10">
+                    <h:form>
+                        <p:dataTable var="expensesentity" value="#{exPayView.getExpensesOfRes}" style="width: 100%" rows="10"  paginator="true"
+                                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                     rowsPerPageTemplate="5,10,15">
+                            <p:column filterBy="#{expensesentity.date}" headerText="Kiírás dátuma" filterMatchMode="2019">
+                                <h:outputText value="#{expensesentity.date}" >
+                                </h:outputText>
+                            </p:column>
+                            <p:column filterBy="#{expensesentity.amount}" headerText="Összeg" >
+                                <h:outputText value="#{expensesentity.amount}" />
+                            </p:column>
+                            <p:column filterBy="#{expensesentity.description}" headerText="Leírás">
+                                <h:outputText value="#{expensesentity.description}" />
+                            </p:column>
+                            <p:column filterBy="#{expensesentity.paymentdate}" headerText="Befizetés dátuma">
+                                <h:outputText value="#{expensesentity.paymentdate}" />
+                                <p:inputText value="#{exPayView.editedEx.paymentdate}" size="12" rendered="#{expensesentity.idexpense == exPayView.editedEx.idexpense}"/>
+                            </p:column>
+                            <p:column filterBy="#{expensesentity.success}" headerText="Sikeres-e">
+                                <h:outputText value="#{expensesentity.success}" />
+                                <p:inputText value="#{exPayView.editedEx.success}" size="12" rendered="#{expensesentity.idexpense == exPayView.editedEx.idexpense}"/>
+                            </p:column>
+
+                            <p:column headerText="Költség szerkesztés">
+                                <p:commandButton id="editBtn" value="Költség szerkesztés" action="#{exPayView.selectExpenseToEdit(expensesentity)}"/>
+                                <p:commandButton value="Mentés" rendered="#{ exPayView.expenseIsEdited and expensesentity.idexpense == exPayView.editedEx}" action="#{exPayView.saveEditedExpense()}"/>
+                            </p:column>
+                        </p:dataTable>
+                    </h:form>
+                </h:panelGrid>
+            </p:panel>
+
+        </ui:define>
+    </ui:composition>
+</h:body>
 </html>

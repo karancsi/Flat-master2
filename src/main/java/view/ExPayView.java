@@ -14,7 +14,7 @@ import java.awt.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-@ManagedBean(name="flatsView")
+@ManagedBean(name="exPayView")
 @SessionScoped
 public class ExPayView implements Serializable {
     private ArrayList<ExpenseEntity> expenses;
@@ -72,7 +72,7 @@ public class ExPayView implements Serializable {
         this.expenses = expenses;
     }
 
-    public ExpenseEntity getSelectedFlat() {
+    public ExpenseEntity getSelectedExp() {
         return selectedEx;
     }
 

@@ -52,35 +52,12 @@ public class ResidentialView implements Serializable{
 
     public String deleteResidential(ResidentialEntity res, FlatEntity flat){
         service.eviction(res,flat);
-        return "movies?faces-redirect=true";
+        return "res_data?faces-redirect=true";
     }
-
-//    public String dataRes(ResidentialEntity res){
-//        selectedResidential = res;
-//        getExpensesOfRes();
-//        return "res_data?faces-redirect=true";
-//    }
-
-//    public ArrayList<ExpensesOfResidential> getExpensesOfRes(){
-//        selectedResidentialsExpenses = service.getAllExpensesOfResidential(selectedResidential);
-//        return selectedResidentialsExpenses;
-//    }
 
     public void setDataRes(ResidentialEntity res){
         selectedResidential = res;
     }
-
-//    public String saveExRes(ExpenseEntity ex){
-//        getExpensesOfRes();
-//        return "res_data?faces-redirect=true";
-//    }
-
-
-
-    //Get days gone by since endTime
-   /* public int getDaysFromEnd(Date date){
-        return (int) service.getDaysFromEnding(date);
-    }*/
 
     //Getters and Setters
     public void setResidentials(ArrayList<ResidentialEntity> res) { this.residentials = res; }
