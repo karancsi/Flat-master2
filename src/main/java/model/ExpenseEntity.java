@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
-@Table(name = "expense", schema = "zsofidb")
+@Table(name = "expense")
 public class ExpenseEntity {
     @javax.persistence.Id
     @Column(name = "idexpense")

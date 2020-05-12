@@ -15,7 +15,7 @@ public class DtoResidential {
     public static List<ResidentialEntity> getAllResidential(){
         residentials = new ArrayList<>();
         try(Session session = HibernateUtil.getSessionFactory().openSession()){
-            residentials = session.createQuery("from ResidentialEntity ", ResidentialEntity.class).list();
+            residentials = session.createQuery("from ResidentialEntity", ResidentialEntity.class).list();
         }catch(Exception e){
             e.getMessage();
         }

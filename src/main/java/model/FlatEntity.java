@@ -3,7 +3,7 @@ package model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "flat", schema = "zsofidb")
+@Table(name = "flat")
 public class FlatEntity {
     @javax.persistence.Id
     @Column(name = "idflat")

@@ -24,12 +24,12 @@
                         <h:outputText value="#{residential.name}"/>
                     </p:column>
 
-                    <p:column filterBy="#{residential.startb}" headerText="Start balance">
-                        <h:outputText value="#{residential.startb}"/>
+                    <p:column filterBy="#{residential.startbalance}" headerText="Start balance">
+                        <h:outputText value="#{residential.startbalance}"/>
                     </p:column>
 
-                    <p:column filterBy="#{residential.actualb}" headerText="Actual balance">
-                        <h:outputText value="#{residential.actualb}"/>
+                    <p:column filterBy="#{residential.actualbalance}" headerText="Actual balance">
+                        <h:outputText value="#{residential.actualbalance}"/>
                         <p:inputText value="#{residentialView.selectedResidential.actualbalance}"/>
                     </p:column>
 
@@ -41,7 +41,7 @@
                     </p:column>
 
                     <p:column headerText="Költség-data">
-                        <p:commandButton value="Költség-data" action="#{flatsView.showFlatData(flatsentity)}"/>
+                        <!--  <p:commandButton value="Költség-data" action="#{flatsView.showFlatData(flatsentity)}"/> -->
                     </p:column>
                 </p:dataTable>
             </h:form>

@@ -13,10 +13,10 @@ import java.util.ArrayList;
 @ApplicationScoped
 public class FlatService {
 
-    private ArrayList<FlatEntity> flats;
+
 
     public ArrayList<FlatEntity> getFlats(){
-        flats = (ArrayList<FlatEntity>) DtoFlat.getAllFlat();
+         ArrayList<FlatEntity> flats = (ArrayList<FlatEntity>) DtoFlat.getAllFlat();
         return flats;
     }
 

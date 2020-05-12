@@ -54,7 +54,7 @@ public class FlatsView implements Serializable {
     }
 
     public String showFlatData(FlatEntity flat){
-        System.out.println("Selected clients: " + flat.toString());
+        //System.out.println("Selected clients: " + flat.toString());
         selectedFlat = flat;
         getResidentialByFlatId();
         return "flat-data?faces-redirect=true";
