@@ -28,6 +28,10 @@ public class ResidentialEntity {
     private int actualbalance;
 
     public ResidentialEntity() {
+        this.idresidential = 100;
+        this.idflat = 100;
+        this.startbalance = 100;
+        this.actualbalance = 100;
     }
 
     public ResidentialEntity(int idresidential, int idflat, String name, int startbalance, int actualbalance) {

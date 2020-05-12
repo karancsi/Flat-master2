@@ -21,7 +21,7 @@ public class ResidentialView implements Serializable{
     private ArrayList<ExpensesOfResidential> selectedResidentialsExpenses;
 
     private ResidentialEntity editedResidential;
-    private ResidentialEntity newResidential ;
+    private ResidentialEntity newResidential = new ResidentialEntity() ;
     private boolean edit = false;
 
     @ManagedProperty("#{ResidentialService}")
@@ -33,8 +33,9 @@ public class ResidentialView implements Serializable{
     }
 
     public String addRes(){
-        service.addResidential(newResidential);
         newResidential = new ResidentialEntity();
+        newResidential.setName(lofasz);
+        service.addResidential(newResidential);
         return "residentials?faces-redirect=true\"";
     }
 
@@ -111,4 +112,13 @@ public class ResidentialView implements Serializable{
         this.edit = edit;
     }
 
+    private String lofasz;
+
+    public String getLofasz() {
+        return lofasz;
+    }
+
+    public void setLofasz(String lofasz) {
+        this.lofasz = lofasz;
+    }
 }

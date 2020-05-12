@@ -20,16 +20,9 @@
                     <h:form>
                         <p:panelGrid columns="2" style="width: 50%" cellpadding="5" >
                             <h:outputText value="Név"/>
-                            <p:inputText value="#{residentialView.newResidential.name}"/>
+                            <p:inputText value="#{residentialView.lofasz}"/>
 
-                            <h:outputText value="Lakás azonosítója"/>
-                            <p:inputMask value="#{residentialView.newResidential.idFlat}" />
 
-                            <h:outputText value="Kezdő egyenleg"/>
-                            <p:inputMask value="#{residentialView.newResidential.startBalance} Ft" />
-
-                            <h:outputText value="Aktuális egyenleg"/>
-                            <p:inputText value="#{residentialView.newResidential.actulaBalance} Ft"/>
 
                             <h:outputText/>
                             <p:commandButton value="Felvétel" action="#{residentialView.addRes}"/>

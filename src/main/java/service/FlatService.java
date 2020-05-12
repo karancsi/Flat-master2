@@ -39,9 +39,11 @@ public class FlatService {
         //az összes lakáshoz kilistázza a lakókat <3
             for (ResidentialEntity residentialEntity : (ArrayList<ResidentialEntity>) DtoResidential.getAllResidential()) {
 
-                if (residentialEntity.getIdflat() == flat.getIdflat()) {
+
+
+                //if (residentialEntity.getIdflat() == flat.getIdflat()) {
                     sortedResidentialEntities.add(residentialEntity);
-                }
+                //}
 
         }
         return sortedResidentialEntities;

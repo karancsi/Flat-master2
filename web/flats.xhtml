@@ -15,29 +15,31 @@
     <ui:composition template="templates/common.xhtml">
         <ui:define name="content">
             <h:form>
-                <p:dataTable id="flats" var="flatsentity" value="#{flatsView.flats}" style="width: 100%" rows="15" widgetVar="flatsEntityTable"
-                             paginator="true"
-                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                             rowsPerPageTemplate="5,10,15"/>
-                             <!--rowKey="#{flatsentity.id}" selection="#{flatsView.selectedFlat}" selectionMode="single"-->
+                <h:outputText value="#{flatsView.flats}" />
 
-                    <p:column filterBy="#{flatsentity.floor}" headerText="Emelet" filterMatchMode="contains">
+                <p:dataTable id="flats" var="flatsentity" value="#{flatsView.flats}" style="width: 100%" rows="15" widgetVar="flatsEntityTable">
+
+                             <!--rowKey="#{flatsentity.id}" selection="#{flatsView.selectedFlat}" selectionMode="single"-->
+                    <p:column headerText="asd" >
+                        <h:outputText value="asd" />
+                    </p:column>
+                    <p:column  headerText="Emelet" >
                         <h:outputText value="#{flatsentity.floor}" />
                     </p:column>
 
-                    <p:column filterBy="#{flatsentity.door}" headerText="Ajtóó" filterMatchMode="contains">
+                    <p:column  headerText="Ajtóó" >
                         <h:outputText value="#{flatsentity.door}" />
                     </p:column>
 
-                    <p:column filterBy="#{flatsentity.size}" headerText="Alapterület" filterMatchMode="contains">
+                    <p:column  headerText="Alapterület">
                         <h:outputText value="#{flatsentity.size}" />
                     </p:column>
 
-                    <p:column filterBy="#{flatsentity.airspace}" headerText="Légtér" filterMatchMode="contains">
+                    <p:column  headerText="Légtér">
                         <h:outputText value="#{flatsentity.airspace}"/>
                     </p:column>
 
-                    <p:column filterBy="#{flatsentity.isempty}" headerText="Szabad">
+                    <p:column  headerText="Szabad">
                         <h:outputText value="#{flatsentity.isempty}" />
                         <p:selectOneMenu value="#{flatsentity.isempty}" size="13" >
                             <f:selectItem itemLabel="Üres" itemValue="0"/>
@@ -48,7 +50,7 @@
                 <p:column headerText="Lakás-data">
                     <p:commandButton value="Lakás-data" action="#{flatsView.showFlatData(flatsentity)}"/>
                 </p:column>
-
+                </p:dataTable>
             </h:form>
         </ui:define>
     </ui:composition>
