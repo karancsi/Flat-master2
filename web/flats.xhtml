@@ -15,36 +15,34 @@
     <ui:composition template="templates/common.xhtml">
         <ui:define name="content">
             <h:form>
-                <h:outputText value="#{flatsView.flats}" />
 
                 <p:dataTable id="flats" var="flatsentity" value="#{flatsView.flats}" style="width: 100%" rows="15" widgetVar="flatsEntityTable">
 
-                             <!--rowKey="#{flatsentity.id}" selection="#{flatsView.selectedFlat}" selectionMode="single"-->
-                    <p:column headerText="asd" >
-                        <h:outputText value="asd" />
+                    <p:column headerText="id" >
+                        <h:outputText value="#{flatsentity.idflat}" />
                     </p:column>
                     <p:column  headerText="Emelet" >
                         <h:outputText value="#{flatsentity.floor}" />
                     </p:column>
 
-                    <p:column  headerText="Ajtóó" >
+                    <p:column  headerText="Ajtó" >
                         <h:outputText value="#{flatsentity.door}" />
                     </p:column>
 
                     <p:column  headerText="Alapterület">
-                        <h:outputText value="#{flatsentity.size}" />
+                        <h:outputText value="#{flatsentity.size} m2" />
                     </p:column>
 
                     <p:column  headerText="Légtér">
-                        <h:outputText value="#{flatsentity.airspace}"/>
+                        <h:outputText value="#{flatsentity.airspace} m3"/>
                     </p:column>
 
                     <p:column  headerText="Szabad">
                         <h:outputText value="#{flatsentity.isempty}" />
-                        <p:selectOneMenu value="#{flatsentity.isempty}" size="13" >
+                     <!--   <p:selectOneMenu value="#{flatsentity.isempty}" size="13" >
                             <f:selectItem itemLabel="Üres" itemValue="0"/>
                             <f:selectItem itemLabel="Foglalt" itemValue="1"/>
-                        </p:selectOneMenu>
+                        </p:selectOneMenu>-->
                     </p:column>
 
                 <p:column headerText="Lakás-data">

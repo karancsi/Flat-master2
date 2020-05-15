@@ -1,6 +1,7 @@
 package view;
 
 import dto.ExpensesOfResidential;
+import model.ExpenseEntity;
 import model.FlatEntity;
 import model.ResidentialEntity;
 import service.ResidentialService;
@@ -18,7 +19,7 @@ public class ResidentialView implements Serializable{
     private ArrayList<ResidentialEntity> residentials;
 
     private ResidentialEntity selectedResidential;
-    private ArrayList<ExpensesOfResidential> selectedResidentialsExpenses;
+    private ArrayList<ExpenseEntity> selectedResidentialsExpenses;
 
     private ResidentialEntity editedResidential;
     private ResidentialEntity newResidential = new ResidentialEntity() ;
@@ -34,7 +35,10 @@ public class ResidentialView implements Serializable{
 
     public String addRes(){
         newResidential = new ResidentialEntity();
-        newResidential.setName(lofasz);
+        newResidential.setName(név);
+        newResidential.setIdflat(idflat);
+        newResidential.setStartbalance(start);
+        newResidential.setActualbalance(actual);
         service.addResidential(newResidential);
         return "residentials?faces-redirect=true\"";
     }
@@ -95,14 +99,22 @@ public class ResidentialView implements Serializable{
         this.newResidential = newResidential;
     }
 
-    public ArrayList<ExpensesOfResidential> getSelectedResidentialsExpenses() {
+    public ArrayList<ExpenseEntity> getSelectedResidentialsExpenses() {
+
+        selectedResidentialsExpenses = service.getAllExpensesOfResidential(selectedResidential);
+
         return selectedResidentialsExpenses;
     }
 
-    public void setSelectedResidentialsExpenses(ArrayList<ExpensesOfResidential> selectedResidentialsExpenses) {
+    public void setSelectedResidentialsExpenses(ArrayList<ExpenseEntity> selectedResidentialsExpenses) {
         this.selectedResidentialsExpenses = selectedResidentialsExpenses;
     }
 
+    public String showExpensesData(ResidentialEntity res){
+        selectedResidential = res;
+        getSelectedResidentialsExpenses();
+        return "residential-data?faces-redirect=true";
+    }
 
     public boolean isEdit() {
         return edit;
@@ -112,13 +124,41 @@ public class ResidentialView implements Serializable{
         this.edit = edit;
     }
 
-    private String lofasz;
+   // ------------------------------------------------------------------------------------------------------------------
+    private String név;
 
-    public String getLofasz() {
-        return lofasz;
+    public String getNév() {
+        return név;
     }
 
-    public void setLofasz(String lofasz) {
-        this.lofasz = lofasz;
+    public void setNév(String név) {
+        this.név = név;
+    }
+    private int start;
+    private int actual;
+    private int idflat;
+
+    public int getIdflat() {
+        return idflat;
+    }
+
+    public void setIdflat(int idflat) {
+        this.idflat = idflat;
+    }
+
+    public int getStart() {
+        return start;
+    }
+
+    public void setStart(int start) {
+        this.start = start;
+    }
+
+    public int getActual() {
+        return actual;
+    }
+
+    public void setActual(int actual) {
+        this.actual = actual;
     }
 }

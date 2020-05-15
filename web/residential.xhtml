@@ -16,15 +16,14 @@
         <ui:define name="content">
 
             <h:form>
-                <p:dataTable var="residential" value="#{residentialView.residentials}" widgetVar="residentialTable" style="width: 100%" rows="10"
-                >
+                <p:dataTable var="residential" value="#{residentialView.residentials}" widgetVar="residentialTable" style="width: 100%" rows="10">
 
                     <p:column headerText="Name">
                         <h:outputText value="#{residential.name}"/>
                     </p:column>
 
                     <p:column headerText="Költség-data">
-                        <!--  <p:commandButton value="Költség-data" action="#{flatsView.showFlatData(flatsentity)}"/> -->
+                        <p:commandButton value="Költség-data" action="#{residentialView.showExpensesData(residential)}"/>
                     </p:column>
                 </p:dataTable>
             </h:form>

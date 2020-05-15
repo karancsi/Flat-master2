@@ -39,7 +39,9 @@ public class FlatService {
         //az összes lakáshoz kilistázza a lakókat <3
             for (ResidentialEntity residentialEntity : (ArrayList<ResidentialEntity>) DtoResidential.getAllResidential()) {
 
-
+                // add if statement
+                // if flat is null list all element
+                // if flat is not null list only element which parent is the flat id
 
                 //if (residentialEntity.getIdflat() == flat.getIdflat()) {
                     sortedResidentialEntities.add(residentialEntity);

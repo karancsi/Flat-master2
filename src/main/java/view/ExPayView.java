@@ -36,7 +36,7 @@ public class ExPayView implements Serializable {
     public String addExpense(){
         service.addExpense(newExpense);
         newExpense = new ExpenseEntity();
-        return "residential-data?faces-redirect=true";
+        return "flats?faces-redirect=true";
     }
 
     public String selectExpenseToEdit(ExpenseEntity exp){
@@ -63,7 +63,7 @@ public class ExPayView implements Serializable {
         return selectedResidentialsExpenses;
     }
 
-    public ArrayList<ExpenseEntity> getAllExpenses() {
+    public ArrayList<ExpenseEntity> getExpenses() {
         expenses = service.getExes();
         return expenses;
     }

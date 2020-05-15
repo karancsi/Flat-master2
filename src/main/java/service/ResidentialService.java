@@ -1,8 +1,10 @@
 package service;
 
+import dto.DtoExpense;
 import dto.DtoFlat;
 import dto.DtoResidential;
 import dto.ExpensesOfResidential;
+import model.ExpenseEntity;
 import model.FlatEntity;
 import model.ResidentialEntity;
 
@@ -20,6 +22,22 @@ public class ResidentialService {
         return residentials;
     }
 
+    public ArrayList<ExpenseEntity> getAllExpensesOfResidential(ResidentialEntity r) {
+
+        ArrayList<ExpenseEntity> sortedExpEntities = new ArrayList<ExpenseEntity>();
+        for (ExpenseEntity eEntity : (ArrayList<ExpenseEntity>) DtoExpense.getAllExpense()) {
+
+            // add if statement
+            // if flat is null list all element
+            // if flat is not null list only element which parent is the flat id
+
+            //if (residentialEntity.getIdflat() == flat.getIdflat()) {
+            sortedExpEntities.add(eEntity);
+            //}
+
+        }
+        return sortedExpEntities;
+    }
 //    public ArrayList<ExpensesOfResidential> getAllExpensesOfResidential(ResidentialEntity res){
 //
 //        ArrayList<ExpensesOfResidential> exRes = (ArrayList<ExpensesOfResidential>) ExpensesOfResidential.generateExpenses();
